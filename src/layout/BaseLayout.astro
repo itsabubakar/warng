@@ -9,30 +9,25 @@ import { AstroFont } from "astro-font";
 import "@styles/global.css";
 
 interface Props {
-  seo?: SEOProps; // Optional SEO properties to customize meta tags
-  schema?: WithContext<Thing>; // Optional schema.org properties for structured data
+  seo?: SEOProps;
+  schema?: WithContext<Thing>;
 }
 
-// Extract `seo` and `schema` from properties or define defaults
 const { seo, schema } = Astro.props;
-const socialImage = `${Astro.site}social.png`; // Path to the default social sharing image
 
-// Define default JSON-LD Schema.org data if no schema is passed
 const defaultSchema: WithContext<Thing> = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  inLanguage: "en-US",
-  "@id": Astro.url.href,
+  "@type": "NGO",
+  name: "Women Aware of Rights Initiative (WAR NG)",
   url: Astro.url.href,
-  name: "DataNova",
-  description:
-    "Unlock powerful data insights with DataNova's advanced analytics suite for Excel. Visualize, analyze, and make data-driven decisions in minutes with seamless Excel integration, AI-powered analysis, and predictive forecasting models.",
+  "@id": Astro.url.href,
+  description: "A Northern Nigeria-based nonprofit empowering women and girls through legal advocacy, survivor care, and community education.",
+  inLanguage: "en-US",
   isPartOf: {
     "@type": "WebSite",
     url: `${Astro.site}`,
-    name: "DataNova",
-    description:
-      "DataNova Analytics Inc. provides advanced analytics for Excel to help businesses unlock actionable insights quickly with no coding required.",
+    name: "WAR NG",
+    description: "WAR Initiative empowers women and girls to break the culture of silence and build safer communities in Northern Nigeria.",
   },
 };
 ---
@@ -42,31 +37,17 @@ const defaultSchema: WithContext<Thing> = {
     {/* SEO Meta Tags */}
     <SEO
       charset="utf-8"
-      title={seo?.title ?? "DataNova"}
-      description={seo?.description ??
-        "Unlock powerful data insights with DataNova's advanced analytics suite for Excel. Visualize, analyze, and make data-driven decisions in minutes with seamless Excel integration, AI-powered analysis, and predictive forecasting models."}
-      openGraph={{
-        basic: {
-          title: "DataNova - Unlock Insights from Your Excel Data",
-          type: "website",
-          image: socialImage,
-        },
-        optional: {
-          description:
-            "Transform your Excel workspace with DataNova's powerful analytics suite. Get insights, predictive models, and visualizations in minutes with no coding required.",
-        },
-      }}
+      title={seo?.title ?? "Women Aware of Rights Initiative (WAR NG)"}
+      description={seo?.description ?? "A Northern Nigeria-based nonprofit empowering women and girls to break the culture of silence, access justice, and thrive."}
+    
       twitter={{
         card: "summary_large_image",
-        title: "DataNova - Unlock Insights from Your Excel Data",
-        description:
-          "Transform your Excel workspace with DataNova's powerful analytics suite. Visualize and analyze data quickly with no coding required.",
-        image: socialImage,
-        imageAlt: "DataNova Logo.",
+        title: "WAR NG – Empowering Women Across Northern Nigeria",
+        description: "Support WAR NG’s mission to end gender-based violence and create safer, more just communities.",
+        imageAlt: "WAR NG Logo",
       }}
       extend={{
         link: [
-          { rel: "icon", href: "/icon.svg", type: "image/svg+xml" },
           { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
           { rel: "manifest", href: "/manifest.webmanifest" },
         ],
@@ -76,13 +57,11 @@ const defaultSchema: WithContext<Thing> = {
         ],
       }}
     />
+
     {/* Schema.org JSON-LD */}
     <Schema item={schema ?? defaultSchema} />
 
-    {/* Client-Side Router for page transitions */}
-    <ClientRouter />
-
-    {/* Font Definitions */}
+    {/* Font setup */}
     <AstroFont
       config={[
         {
@@ -106,7 +85,7 @@ const defaultSchema: WithContext<Thing> = {
       ]}
     />
 
-    {/* Remove duplicate font links during transitions */}
+    {/* Prevent font duplication on transition */}
     <script>
       import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
       document.addEventListener("astro:before-swap", (e) =>
@@ -118,6 +97,7 @@ const defaultSchema: WithContext<Thing> = {
       );
     </script>
   </head>
+
   <body class="bg-off-white selection:bg-yellow-200 selection:text-slate-700">
     <Navbar />
 
