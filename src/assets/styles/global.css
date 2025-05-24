@@ -38,14 +38,26 @@
   --color-teal-900: oklch(54.08% 0.0908 194.8);
   --color-teal-950: oklch(32.68% 0.047 195.1);
 
+  --color-yellow-50: oklch(0.987 0.043 100);
+  --color-yellow-100: oklch(0.968 0.06 100);
+  --color-yellow-200: oklch(0.938 0.087 100);
+  --color-yellow-300: oklch(0.896 0.116 100);
+  --color-yellow-400: oklch(0.839 0.142 100);
+  --color-yellow-500: oklch(0.768 0.169 100);
+  --color-yellow-600: oklch(0.685 0.163 100);
+  --color-yellow-700: oklch(0.588 0.15 100);
+  --color-yellow-800: oklch(0.481 0.126 100);
+  --color-yellow-900: oklch(0.361 0.09 100);
+
   /* https://tailwindcss.com/docs/font-family#customizing-your-theme */
   --font-dm-sans: "DM Sans", sans-serif;
   --font-work-sans: "Work Sans", sans-serif;
 }
 
 @theme inline {
-  --animate-scroll: scroll var(--duration, 40s) var(--direction, forwards) linear infinite;
-  
+  --animate-scroll: scroll var(--duration, 40s) var(--direction, forwards)
+    linear infinite;
+
   @keyframes scroll {
     to {
       transform: translate(calc(-50% - 0.5rem));
@@ -91,4 +103,3 @@
 @utility card {
   @apply relative z-10 flex h-full flex-col border-dashed border-slate-300 p-4 before:absolute before:inset-0 before:-z-1 before:bg-linear-to-b/oklch before:via-80% before:opacity-0 hover:before:from-transparent hover:before:via-transparent hover:before:to-teal-500/20 hover:before:opacity-100 focus:outline-hidden focus:before:from-transparent focus:before:via-transparent focus:before:to-teal-500/20 focus:before:opacity-100 md:p-6;
 }
-

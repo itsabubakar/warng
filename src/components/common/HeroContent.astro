@@ -1,11 +1,11 @@
 ---
 import Button from "@ui/Button.astro";
 
-const title = "Turn Excel® into Your Data Intelligence Powerhouse";
+const title = "Turning Silence into Strength. Empowering Women Across Northern Nigeria.";
 const subTitle =
-  "Get instant insights from your spreadsheets with advanced analytics and stunning visualizations. No coding required. Make confident decisions backed by data in minutes, not days.";
-const secondaryCTA = { text: "Start Free Trial", href: "https://github.com/mearashadowfax/DataNova" };
-const primaryCTA = { text: "View Pricing", href: "/downloads/license-options" };
+  "WAR Initiative is a nonprofit organization fighting Sexual and Gender-Based Violence (SGBV) by educating, advocating, and providing safe spaces for survivors. Join us in building a just and inclusive society where every woman knows her rights — and uses them.";
+const secondaryCTA = { text: "Join the Movement", href: "/join" };
+const primaryCTA = { text: "Donate Now", href: "/donate" };
 ---
 
 {/* Hero Content */}
@@ -25,8 +25,6 @@ const primaryCTA = { text: "View Pricing", href: "/downloads/license-options" };
 
 {/* CTA Buttons */}
 <div class="flex flex-col justify-center gap-5 sm:flex-row">
-  <Button href={secondaryCTA.href} variant="secondary" target="_blank"
-    >{secondaryCTA.text}</Button
-  >
+  <Button href={secondaryCTA.href} variant="secondary">{secondaryCTA.text}</Button>
   <Button href={primaryCTA.href} variant="primary">{primaryCTA.text}</Button>
 </div>

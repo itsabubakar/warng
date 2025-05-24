@@ -4,12 +4,12 @@ import Support from "@megaMenu/Support.astro";
 import Platform from "@megaMenu/Platform.astro";
 import Features from "@megaMenu/Features.astro";
 import Button from "@ui/Button.astro";
-import { navigationLinks } from "@utils/navigation";
+import { navigationLinks } from "@utils/navigation"; 
+import { Image } from "astro:assets";
+import Logo from "@images/warng-logo-2.jpg";
 
 const currentPath = Astro.url.pathname;
 
-// Call-to-action configuration for the primary button
-const primaryCTA = { text: "Try Free", href: "https://github.com/mearashadowfax/DataNova" };
 ---
 
 <header
@@ -19,13 +19,12 @@ const primaryCTA = { text: "Try Free", href: "https://github.com/mearashadowfax/
     class="relative mx-auto w-full px-4 py-2 sm:px-6 lg:px-8 xl:flex xl:max-w-7xl xl:items-center xl:justify-between xl:gap-3 2xl:max-w-[85rem]"
   >
     <div class="flex items-center justify-between gap-x-1">
-      <a
-        class="dm-sans flex-none text-2xl font-light text-slate-400 focus:opacity-80 focus:outline-hidden"
-        href="/"
-        aria-label="DataNova Logo"
-        translate="no"
-        ><span class="font-semibold text-teal-700">Data</span>Nova</a
-      >
+      
+      <Image
+        class=" size-12 xl:inline-block"
+        src={Logo}
+        alt="DataNova Logo"
+      />
 
       <button
         type="button"
@@ -95,14 +94,6 @@ const primaryCTA = { text: "Try Free", href: "https://github.com/mearashadowfax/
                 Home
               </a>
 
-              <Features />
-
-              <Platform />
-
-              <Downloads />
-
-              <Support />
-
               {
                 navigationLinks.map((link) => (
                   <a
@@ -127,11 +118,11 @@ const primaryCTA = { text: "Try Free", href: "https://github.com/mearashadowfax/
             class="mt-5 flex flex-wrap items-center gap-x-1.5 xl:ml-6 xl:mt-0"
           >
             <Button
-              href={primaryCTA.href}
+              href={'/donate'}
               variant="primary"
               target="_blank"
               className="inline-flex text-nowrap border-none py-2!"
-              >{primaryCTA.text}</Button
+              >Donate</Button
             >
           </div>
         </div>

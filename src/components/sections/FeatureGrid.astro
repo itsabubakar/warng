@@ -1,87 +1,82 @@
 ---
 import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
 
-// Content for the section title and subtitle
-const title =
-  'Why Choose <span class="text-teal-700">Data</span><span class="font-normal text-slate-400">Nova</span>?';
-const subTitle =
-  "Experience the perfect balance of power and simplicity in data analytics. From startups to enterprises, DataNova empowers teams to extract meaningful insights from their data while maintaining seamless integration with existing workflows. Transform the way you analyze, visualize, and act on your data.";
+const title = 'Why <span class="text-yellow-600">AFFEST</span> Matters';
+const subTitle = `The Arewa Fashion and Food Festival (AFFEST) is more than a celebration — it’s a movement. Born from the healing journey of survivors at the Inganci Centre, AFFEST is a cultural and economic platform that restores voices, showcases talent, and transforms lives across Northern Nigeria.`;
 
 const features = [
   {
     borderClasses: "md:border-l md:border-r",
-    gradientClasses: "bg-linear-to-l/oklch from-teal-200 to-transparent",
-    icon: "cursorRays",
-    heading: "Built for Everyone",
+    gradientClasses: "bg-gradient-to-l from-yellow-100 to-transparent",
+    icon: "sparkles",
+    heading: "Empowering Survivors",
     description:
-      "Whether you're a business analyst or data scientist, DataNova's intuitive interface makes advanced analytics accessible. Start with simple visualizations and progress to complex predictive models at your own pace.",
+      "AFFEST provides a safe, stigma-free platform where survivors express their creativity through fashion, food, and craft — transforming therapy into economic freedom.",
   },
   {
     borderClasses: "border-b border-t md:border-b-0",
     gridClasses: "md:col-start-2 md:col-end-3",
-    gradientClasses: "bg-linear-to-t/oklch from-teal-200 to-transparent",
-    icon: "cog",
-    heading: "Enterprise-Grade Analytics",
+    gradientClasses: "bg-gradient-to-t from-yellow-100 to-transparent",
+    icon: "users",
+    heading: "Celebrating Culture",
     description:
-      "Harness the full power of advanced analytics with our comprehensive toolset. From automated pattern recognition to custom modeling, DataNova scales with your analytical needs while maintaining exceptional performance.",
+      "Showcasing Northern Nigeria's rich traditions, AFFEST brings communities together through fashion shows, food fairs, and artisan markets driven by purpose and pride.",
   },
   {
     borderClasses: "md:border-l md:border-r md:border-t",
     gridClasses: "md:col-end-4",
-    gradientClasses: "bg-linear-to-tl/oklch from-teal-200 to-transparent",
-    icon: "puzzle",
-    heading: "Seamless Integration",
+    gradientClasses: "bg-gradient-to-tl from-yellow-100 to-transparent",
+    icon: "lightbulb",
+    heading: "A Movement of Healing",
     description:
-      "Keep your existing Excel workflow while adding powerful analytics capabilities. DataNova works where you do, transforming your familiar spreadsheets into a sophisticated business intelligence platform.",
+      "What began as a form of creative therapy has grown into an annual event of dignity and visibility. AFFEST is now a rallying point for economic empowerment and cultural celebration led by survivors.",
   },
 ];
 ---
 
-<section
-  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 md:py-14 lg:px-8 lg:py-20"
->
-  <div
-    class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 md:grid-rows-2"
-  >
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 md:py-14 lg:px-8 lg:py-20">
+  <div class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 md:grid-rows-2">
     {/* Section container for the title and subtitle */}
-    <div
-      class="mx-auto max-w-lg pb-5 text-center md:col-span-2 lg:mx-0 lg:flex-auto lg:text-left"
-    >
-      <h2
-        class="text-2xl font-semibold tracking-tight text-balance text-slate-800 md:text-3xl md:leading-tight"
-      >
+    <div class="mx-auto max-w-lg pb-5 text-center md:col-span-2 lg:mx-0 lg:flex-auto lg:text-left">
+      <h2 class="text-2xl font-semibold tracking-tight text-balance text-slate-800 md:text-3xl md:leading-tight">
         <Fragment set:html={title} />
       </h2>
-      <p
-        class="mt-6 text-start text-lg/8 text-pretty text-slate-700 sm:text-center md:text-start"
-      >
+      <p class="mt-6 text-start text-lg/8 text-pretty text-slate-700 sm:text-center md:text-start">
         {subTitle}
       </p>
     </div>
 
     {/* Feature Cards */}
     {
-      features &&
-        features.map((feature) => (
+      features.map((feature) => (
+        <div
+          class={`group relative mx-auto flex flex-col border-dashed border-slate-400 py-10 ${feature.borderClasses} ${feature.gridClasses}`}
+        >
           <div
-            class={`group relative mx-auto flex flex-col border-dashed border-slate-400 py-10 ${feature.borderClasses} ${feature.gridClasses}`}
-          >
-            <div
-              class={`group pointer-events-none absolute inset-0 h-full w-full ${feature.gradientClasses} opacity-0 transition duration-300 group-hover:opacity-100`}
-            />
-            <div class="relative z-10 mb-4 px-10">
-              <Icon name={feature.icon} />
-            </div>
-            <div class="relative z-10 mb-2 px-10 text-lg font-semibold">
-              <span class="inline-block text-balance text-slate-800 transition duration-300 group-hover:translate-x-2">
-                {feature.heading}
-              </span>
-            </div>
-            <p class="z-10 max-w-sm px-4 text-sm text-pretty text-slate-700 sm:max-w-lg md:mx-auto">
-              {feature.description}
-            </p>
+            class={`pointer-events-none absolute inset-0 h-full w-full ${feature.gradientClasses} opacity-0 transition duration-300 group-hover:opacity-100`}
+          />
+          <div class="relative z-10 mb-2 px-10 text-lg font-semibold">
+            <span class="inline-block text-balance text-slate-800 transition duration-300 group-hover:translate-x-2">
+              {feature.heading}
+            </span>
           </div>
-        ))
+          <p class="z-10 max-w-sm px-4 text-sm text-pretty text-slate-700 sm:max-w-lg md:mx-auto">
+            {feature.description}
+          </p>
+        </div>
+      ))
     }
+  </div>
+
+  {/* CTA Button */}
+  <div class="mt-10 flex justify-center">
+    <Button
+      href="https://affest.com.ng"
+      variant="primary"
+      className="group inline-flex items-center gap-x-2"
+    >
+      Visit AFFEST <Icon name="chevronRight" />
+    </Button>
   </div>
 </section>

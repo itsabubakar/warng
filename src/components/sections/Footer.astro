@@ -2,43 +2,34 @@
 import FooterForm from "@ui/forms/FooterForm.astro";
 import ContactInfo from "@common/ContactInfo.astro";
 
-// Props for customization
-const companyName = "DataNova Analytics Inc.";
+// WAR NG branding and details
+const companyName = "Women Aware of Rights Initiative";
 const companyDescription =
-  "DataNova Analytics Inc. is a leading business intelligence and analytics software company founded in 2018, with offices in Boston and Seattle.";
+  "WAR Initiative is a nonprofit organization committed to breaking the culture of silence, empowering women and girls, and building safe, just communities across Northern Nigeria.";
 
-// Contact information for the company
 const contactDetails = {
-  address: "Seattle, WA, 98104",
-  phone: "1 (833) 328-2669",
-  email: "info@datanova.com",
-  website: "www.datanova.com",
+  address: "Kaduna, Nigeria",
+  phone: "+234 813 000 0000",
+  email: "womenawareofrights@gmail.com",
+  website: "www.womenawareofrights.com.ng",
 };
 
-// Dynamic date for copyright display
 const copyrightYear = new Date().getFullYear();
 
-// Developer or team behind the website
-const craftedBy = { name: "gulamoff", url: "https://www.gulamoff.dev/" };
 
-// Trademark notice
-const trademarkNotice =
-  "Microsoft&reg; and Excel&reg; are registered trademarks or trademarks of Microsoft Corporation";
 ---
 
-<footer
-  class="mt-auto w-full bg-linear-to-t/oklch from-teal-200 via-transparent to-white pb-10"
->
+<footer class="mt-auto w-full bg-gradient-to-t from-yellow-100 via-transparent to-white pb-10">
   <div class="mx-auto mt-auto w-full max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8">
     <hr class="mb-10 border-slate-200" />
 
     <div class="grid grid-cols-2 gap-6 md:grid-cols-5">
-      {/* Company Information */}
+      {/* Organization Info */}
       <div class="col-span-full self-center xl:col-span-2">
         <a
-          href="#"
+          href="/"
           class="flex-none text-xl font-semibold uppercase text-slate-700 focus:opacity-80 focus:outline-hidden"
-          aria-label="{companyName} Homepage"
+          aria-label="WAR NG Homepage"
         >
           {companyName}
         </a>
@@ -47,41 +38,21 @@ const trademarkNotice =
         </p>
       </div>
 
-      {/* Contact Information Section */}
+      {/* Contact Info */}
       <div class="col-span-1 md:col-span-2 xl:col-span-1 xl:col-start-3">
         <ContactInfo {...contactDetails} />
       </div>
 
-      {/* Email Subscription Form */}
-      <div class="col-span-2 md:col-span-3 xl:col-span-2">
-        <h3 class="font-semibold text-slate-700">More information?</h3>
-        <FooterForm />
-      </div>
+     
     </div>
 
-    {/* Divider before footer's bottom section */}
+    {/* Divider line */}
     <hr class="mb-5 mt-10 border-slate-200" />
 
-    <div
-      class="grid gap-y-2 sm:flex sm:items-center sm:justify-between sm:gap-y-0"
-    >
-      {/* Copyright and Crafted By Section */}
+    <div class="grid gap-y-2 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
+      {/* Footer bottom info */}
       <p class="text-sm text-slate-400/50">
-        &copy; 2018-{copyrightYear}
-        {companyName} Crafted by
-        <a
-          href={craftedBy.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-medium underline underline-offset-2 outline-hidden ring-slate-400 transition duration-300 hover:text-slate-400 hover:decoration-dashed focus:outline-hidden focus-visible:ring-3"
-        >
-          {craftedBy.name}
-        </a>
-      </p>
-
-      {/* Trademark Notice */}
-      <p class="text-sm text-slate-400/50">
-        <Fragment set:html={trademarkNotice} />
+        &copy; 2018–{copyrightYear} {companyName}.
       </p>
     </div>
   </div>
