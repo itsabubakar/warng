@@ -1,0 +1,74 @@
+---
+import Button from "@/components/ui/Button.astro";
+import BaseLayout from "@layout/BaseLayout.astro";
+import type { WithContext, Thing } from "schema-dts";
+
+// Page title and SEO
+const title = "Donate to WAR";
+const seo = {
+  title: "Donate – Women Aware of Rights Initiative (WAR)",
+  description:
+    "Support Women Aware of Rights Initiative in the fight against gender-based violence. Your donation provides safety, justice, and empowerment for women and girls in Northern Nigeria.",
+};
+
+// Schema.org metadata
+const schema: WithContext<Thing> = {
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  "@id": Astro.url.href,
+  url: Astro.url.href,
+  name: "Donate to Women Aware of Rights Initiative",
+  description:
+    "Your donation to WAR supports survivors of gender-based violence with legal aid, shelter, and empowerment programs in Northern Nigeria.",
+  target: {
+    "@type": "EntryPoint",
+    urlTemplate: Astro.url.href,
+    actionPlatform: "https://paystack.com/",
+  },
+};
+---
+
+<BaseLayout seo={seo} schema={schema}>
+  <section class="mx-auto max-w-4xl px-4 pb-28 pt-48 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold text-slate-800">Your Support Can Change a Life</h1>
+    <p class="mt-6 text-lg text-slate-600">
+      Every woman deserves to live free from fear, violence, and silence. At Women Aware of Rights Initiative (WAR),
+      we are on the frontlines—advocating, protecting, and restoring dignity to survivors of Sexual and Gender-Based
+      Violence across Northern Nigeria.
+    </p>
+    <p class="mt-4 text-lg text-slate-600">
+      Your donation is more than a gift. It is a lifeline for a survivor seeking justice, a child needing a safe classroom,
+      a woman rebuilding her life at Inganci. With your support, we can continue to provide legal aid, psychosocial support,
+      and healing through art, education, and empowerment.
+    </p>
+    <p class="mt-4 text-lg text-slate-600 font-semibold">
+      Stand with us. Give hope. Fuel change.
+    </p>
+
+    <div class="mt-10">
+   
+        <Button id="donateBtn" variant="primary">Donate Now</Button
+        >
+    </div>
+  </section>
+
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    document.getElementById("donateBtn")?.addEventListener("click", function () {
+        // @ts-ignore
+      PaystackPop.setup({
+        key: 'your-public-key-here', // Replace with your Paystack public key
+        email: 'donor@example.com',  // Optionally set a default
+        amount: 5000 * 100,          // Default donation in kobo (₦50.00 = 5000 kobo)
+        currency: 'NGN',
+        ref: '' + Math.floor(Math.random() * 1000000000 + 1),
+        callback: function (response:any) {
+          alert("Thank you for your donation! Reference: " + response.reference);
+        },
+        onClose: function () {
+          alert("Donation window closed.");
+        }
+      }).openIframe();
+    });
+  </script>
+</BaseLayout>
